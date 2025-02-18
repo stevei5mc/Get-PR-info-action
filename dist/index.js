@@ -27,6 +27,7 @@ import require$$6 from 'string_decoder';
 import require$$0$9 from 'diagnostics_channel';
 import require$$2$2 from 'child_process';
 import require$$6$1 from 'timers';
+import { console } from 'node:inspector';
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
@@ -27268,8 +27269,10 @@ async function wait(milliseconds) {
 async function run() {
     const repoName = core.getInput('repoName');
     const prId = core.getInput('prId');
-		console.log(repoName);
-		console.log(prId);
+		const url = `https://api.github.com/repos/${repoName}/pulls/${prId}/`;
+		console.log(`Api url ${url}`);
+		console.log(`Repo ${repoName}`);
+		console.log(`Pr id: ${prId}`);
 }
 
 /**
