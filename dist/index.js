@@ -27268,8 +27268,8 @@ async function wait(milliseconds) {
 async function run() {
     const repoName = core.getInput('repoName');
     const prId = core.getInput('prId');
-    core.log(repoName);
-    core.log(prId);
+		console.log(repoName);
+		console.log(prId);
 }
 
 /**
