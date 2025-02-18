@@ -1,6 +1,7 @@
 name: Continuous Integration
 
 on:
+  workflow_dispatch:
   pull_request:
     branches:
       - main
@@ -57,7 +58,7 @@ jobs:
         id: test-action
         uses: ./
         with:
-          milliseconds: 1000
+          PrId: 1
 
       - name: Print Output
         id: output

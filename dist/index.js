@@ -27266,23 +27266,10 @@ async function wait(milliseconds) {
  * @returns {Promise<void>} Resolves when the action is complete.
  */
 async function run() {
-  try {
-    const ms = coreExports.getInput('milliseconds');
-
-    // Debug logs are only output if the `ACTIONS_STEP_DEBUG` secret is true
-    coreExports.debug(`Waiting ${ms} milliseconds ...`);
-
-    // Log the current timestamp, wait, then log the new timestamp
-    coreExports.debug(new Date().toTimeString());
-    await wait(parseInt(ms, 10));
-    coreExports.debug(new Date().toTimeString());
-
-    // Set outputs for other workflow steps to use
-    coreExports.setOutput('time', new Date().toTimeString());
-  } catch (error) {
-    // Fail the workflow run if an error occurs
-    if (error instanceof Error) coreExports.setFailed(error.message);
-  }
+    const repoName = core.getInput('repoName');
+    const prId = core.getInput('prId');
+    core.log(repoName);
+    core.log(prId);
 }
 
 /**

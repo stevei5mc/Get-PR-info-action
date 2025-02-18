@@ -1,23 +1,27 @@
-name: The name of your action here
-description: Provide a description here
-author: Your name or organization here
+name: Get PR info action
+description: Get PR info action
+author: stevei5mc
 
 # Add your action's branding here. This will appear on the GitHub Marketplace.
 branding:
-  icon: heart
+  icon: git-pull-request
   color: red
 
 # Define your inputs here.
 inputs:
-  milliseconds:
-    description: Your input description here
+  repoName:
+    description: Repo name
     required: true
-    default: '1000'
+    default: '${{ github.repository }}'
+  prId:
+    description: PR ID
+    required: true
+    default: '${{ github.event.pull_request.number }}'
 
 # Define your outputs here.
-outputs:
-  time:
-    description: Your output description here
+# outputs:
+#   time:
+#     description: Your output description here 
 
 runs:
   using: node20
