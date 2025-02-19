@@ -27276,7 +27276,7 @@ async function run() {
 	core.setOutput('apiUrl',url);
 	try {
 		const response = await fetch(url);
-		const data = response.json();
+		const data = await response.json();
 		const htmlUrl = data.html_url;
 		core.info(`Html url:  ${htmlUrl}`);
 		core.setOutput('htmlUrl',htmlUrl);
