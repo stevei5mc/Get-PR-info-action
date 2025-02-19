@@ -27267,12 +27267,13 @@ async function wait(milliseconds) {
  * @returns {Promise<void>} Resolves when the action is complete.
  */
 async function run() {
-    const repoName = core.getInput('repoName');
-    const prId = core.getInput('prId');
-		const url = `https://api.github.com/repos/${repoName}/pulls/${prId}/`;
-		console.log(`Api url ${url}`);
-		console.log(`Repo ${repoName}`);
-		console.log(`Pr id: ${prId}`);
+  const repoName = core.getInput('repoName');
+	core.info(`Repository name: ${repoName}`);
+  const prId = core.getInput('prId');
+	core.info(`Pull requests`);
+	const url = `https://api.github.com/repos/${repoName}/pulls/${prId}/`;
+	core.info(`Api url: ${url}`);
+	core.setOutput('apiUrl',url);
 }
 
 /**

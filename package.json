@@ -1,6 +1,6 @@
 {
-  "name": "javascript-action",
-  "description": "GitHub Actions JavaScript Template",
+  "name": "get-pr-info-action",
+  "description": "Get PR info action",
   "version": "0.0.0",
   "author": "",
   "type": "module",

@@ -5,7 +5,7 @@ author: stevei5mc
 # Add your action's branding here. This will appear on the GitHub Marketplace.
 branding:
   icon: git-pull-request
-  color: red
+  color: blue
 
 # Define your inputs here.
 inputs:
@@ -19,9 +19,9 @@ inputs:
     default: '${{ github.event.pull_request.number }}'
 
 # Define your outputs here.
-# outputs:
-#   time:
-#     description: Your output description here 
+outputs:
+  apiUrl:
+    description: Your output description here
 
 runs:
   using: node20
