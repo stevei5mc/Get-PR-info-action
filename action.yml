@@ -22,6 +22,16 @@ inputs:
 outputs:
   apiUrl:
     description: Your output description here
+  htmlUrl:
+    description: Your output description here
+  commits:
+    description: Your output description here
+  additions:
+    description: Your output description here
+  deletions:
+    description: Your output description here
+  changedFiles:
+    description: Your output description here
 
 runs:
   using: node20

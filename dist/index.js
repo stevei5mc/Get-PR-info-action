@@ -27270,10 +27270,31 @@ async function run() {
   const repoName = core.getInput('repoName');
 	core.info(`Repository name: ${repoName}`);
   const prId = core.getInput('prId');
-	core.info(`Pull requests`);
-	const url = `https://api.github.com/repos/${repoName}/pulls/${prId}/`;
+	core.info(`Pull requests: ${prId}`);
+	const url = `https://api.github.com/repos/${repoName}/pulls/${prId}`;
 	core.info(`Api url: ${url}`);
 	core.setOutput('apiUrl',url);
+	try {
+		const response = await fetch(url);
+		const data = response.json();
+		const htmlUrl = data.html_url;
+		core.info(`Html url:  ${htmlUrl}`);
+		core.setOutput('htmlUrl',htmlUrl);
+		const commits = data.commits;
+		core.info(`Commits:  ${commits}`);
+		core.setOutput('commits',commits);
+		const additions = data.additions;
+		core.info(`Additions:  ${additions}`);
+		core.setOutput('additions',additions);
+		const deletions = data.deletions;
+		core.info(`Deletions:  ${deletions}`);
+		core.setOutput('deletions',deletions);
+		const changedFiles = data.changed_files;
+		core.info(`Changed files:  ${changedFiles}`);
+		core.setOutput('changedFiles',changedFiles);
+	} catch (error) {
+		core.setFailed(`Network status code ${error.response.status}, reason ${error.message}`);
+	}
 }
 
 /**

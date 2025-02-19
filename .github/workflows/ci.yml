@@ -62,4 +62,10 @@ jobs:
 
       - name: Print Output
         id: output
-        run: echo "${{ steps.test-action.outputs.apiUrl }}"
+        run: |
+          echo "${{ steps.test-action.outputs.apiUrl }}"
+          echo "${{ steps.test-action.outputs.htmlUrl }}"
+          echo "${{ steps.test-action.outputs.commits }}"
+          echo "${{ steps.test-action.outputs.additions }}"
+          echo "${{ steps.test-action.outputs.deletions }}"
+          echo "${{ steps.test-action.outputs.changedFiles }}"  
