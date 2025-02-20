@@ -21,18 +21,25 @@ inputs:
 # Define your outputs here.
 outputs:
   apiUrl:
-    description: Your output description here
+    description: Request api url
   htmlUrl:
-    description: Your output description here
+    description: Pull request url
   commits:
-    description: Your output description here
+    description: Pull request commits count
   additions:
-    description: Your output description here
+    description: Pull request additions line
   deletions:
-    description: Your output description here
+    description: Pull request deletions line
   changedFiles:
-    description: Your output description here
-
+    description: Pull request changed files
+  headSha:
+    description: Pull request head sha
+  headFullName:
+    description: Pull request head full name
+  baseSha:
+    description: Pull request base sha
+  baseFullName:
+    description: Pull request base full name
 runs:
   using: node20
   main: dist/index.js

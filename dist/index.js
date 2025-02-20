@@ -27292,6 +27292,18 @@ async function run() {
 		const changedFiles = data.changed_files;
 		core.info(`Changed files:  ${changedFiles}`);
 		core.setOutput('changedFiles',changedFiles);
+		const headSha = data.head.sha;
+		core.info(`Head sha:  ${headSha}`);
+		core.setOutput('headSha',headSha);
+		const headFullName = data.head.repo.full_name;
+		core.info(`Head full name:  ${headFullName}`);
+		core.setOutput('headFullName',headFullName);
+		const baseSha = data.base.sha;
+		core.info(`Base sha:  ${baseSha}`);
+		core.setOutput('baseSha',baseSha);
+		const baseFullName = data.base.repo.full_name;
+		core.info(`Base full name:  ${baseFullName}`);
+		core.setOutput('baseFullName',baseFullName);
 	} catch (error) {
 		core.setFailed(`Network status code ${error.response.status}, reason ${error.message}`);
 	}

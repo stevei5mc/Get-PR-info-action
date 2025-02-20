@@ -58,7 +58,7 @@ jobs:
         id: test-action
         uses: ./
         with:
-          PrId: 1
+          PrId: 6
 
       - name: Print Output
         id: output
@@ -68,4 +68,8 @@ jobs:
           echo "${{ steps.test-action.outputs.commits }}"
           echo "${{ steps.test-action.outputs.additions }}"
           echo "${{ steps.test-action.outputs.deletions }}"
-          echo "${{ steps.test-action.outputs.changedFiles }}"  
+          echo "${{ steps.test-action.outputs.changedFiles }}"
+          echo "${{ steps.test-action.outputs.headSha }}"
+          echo "${{ steps.test-action.outputs.headFullName }}"
+          echo "${{ steps.test-action.outputs.baseSha }}"
+          echo "${{ steps.test-action.outputs.baseFullName }}"
