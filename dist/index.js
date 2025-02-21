@@ -27269,7 +27269,7 @@ async function wait(milliseconds) {
 async function run() {
   const repoName = core.getInput('repoName');
 	core.info(`Repository name: ${repoName}`);
-  const prId = core.getInput('prId');
+  	const prId = core.getInput('prId');
 	core.info(`Pull requests: ${prId}`);
 	const url = `https://api.github.com/repos/${repoName}/pulls/${prId}`;
 	core.info(`Api url: ${url}`);
@@ -27280,6 +27280,9 @@ async function run() {
 		const htmlUrl = data.html_url;
 		core.info(`Html url:  ${htmlUrl}`);
 		core.setOutput('htmlUrl',htmlUrl);
+		const requestUser = data.user.login;
+		core.info(`Request initiate user:  ${requestUser}`);
+		core.setOutput('requestUser',requestUser);
 		const commits = data.commits;
 		core.info(`Commits:  ${commits}`);
 		core.setOutput('commits',commits);
@@ -27295,15 +27298,27 @@ async function run() {
 		const headSha = data.head.sha;
 		core.info(`Head sha:  ${headSha}`);
 		core.setOutput('headSha',headSha);
+		const headRef = data.head.ref;
+		core.info(`Head ref:  ${headRef}`);
+		core.setOutput('headRef',headRef);
 		const headFullName = data.head.repo.full_name;
 		core.info(`Head full name:  ${headFullName}`);
 		core.setOutput('headFullName',headFullName);
+		const headRepoUrl = data.head.repo.html_url;
+		core.info(`Head repo url:  ${headRepoUrl}`);
+		core.setOutput('headRepoUrl',headRepoUrl);
 		const baseSha = data.base.sha;
 		core.info(`Base sha:  ${baseSha}`);
 		core.setOutput('baseSha',baseSha);
+		const baseRef = data.base.ref;
+		core.info(`Base ref:  ${baseRef}`);
+		core.setOutput('baseRef',baseRef);
 		const baseFullName = data.base.repo.full_name;
 		core.info(`Base full name:  ${baseFullName}`);
 		core.setOutput('baseFullName',baseFullName);
+		const baseRepoUrl = data.base.repo.html_url;
+		core.info(`Base repo url:  ${baseRepoUrl}`);
+		core.setOutput('baseRepoUrl',baseRepoUrl);
 	} catch (error) {
 		core.setFailed(`Network status code ${error.response.status}, reason ${error.message}`);
 	}

@@ -21,9 +21,11 @@ inputs:
 # Define your outputs here.
 outputs:
   apiUrl:
-    description: Request api url
+    description: Pull request api url
   htmlUrl:
     description: Pull request url
+  requestUser:
+    description: Pull request initiate user
   commits:
     description: Pull request commits count
   additions:
@@ -34,12 +36,21 @@ outputs:
     description: Pull request changed files
   headSha:
     description: Pull request head sha
+  headRef:
+    description: Pull request head sha
   headFullName:
     description: Pull request head full name
+  headRepoUrl:
+    description: Pull request head repo url
   baseSha:
+    description: Pull request base sha
+  baseRef:
     description: Pull request base sha
   baseFullName:
     description: Pull request base full name
+  baseRepoUrl:
+    description: Pull request base repo url
+
 runs:
   using: node20
   main: dist/index.js

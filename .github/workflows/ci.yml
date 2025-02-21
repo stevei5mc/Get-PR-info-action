@@ -73,3 +73,8 @@ jobs:
           echo "${{ steps.test-action.outputs.headFullName }}"
           echo "${{ steps.test-action.outputs.baseSha }}"
           echo "${{ steps.test-action.outputs.baseFullName }}"
+          echo "${{ steps.test-action.outputs.requestUser }}"
+          echo "${{ steps.test-action.outputs.headRef }}"
+          echo "${{ steps.test-action.outputs.headRepoUrl }}"
+          echo "${{ steps.test-action.outputs.baseRef }}"
+          echo "${{ steps.test-action.outputs.baseRepoUrl }}"
