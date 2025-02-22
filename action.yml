@@ -24,6 +24,12 @@ outputs:
     description: Pull request api url
   htmlUrl:
     description: Pull request url
+  prState:
+    description: Pull request state
+  prLockedState:
+    description: Pull request locked state
+  prDraftState:
+    description: Pull request draft state
   requestUser:
     description: Pull request initiate user
   commits:

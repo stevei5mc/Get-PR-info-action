@@ -27280,6 +27280,15 @@ async function run() {
 		const htmlUrl = data.html_url;
 		core.info(`Html url:  ${htmlUrl}`);
 		core.setOutput('htmlUrl',htmlUrl);
+		const prState = data.state;
+		core.info(`Pull request state:  ${prState}`);
+		core.setOutput('prState',prState);
+		const prLockedState = data.locked;
+		core.info(`Pull request locked state:  ${prLockedState}`);
+		core.setOutput('prLockedState',prLockedState);
+		const prDraftState = data.draft;
+		core.info(`Pull request draft state:  ${prDraftState}`);
+		core.setOutput('prDraftState',prDraftState);
 		const requestUser = data.user.login;
 		core.info(`Request initiate user:  ${requestUser}`);
 		core.setOutput('requestUser',requestUser);
