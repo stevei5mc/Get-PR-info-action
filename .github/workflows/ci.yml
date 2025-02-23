@@ -53,25 +53,34 @@ jobs:
       - name: Checkout
         id: checkout
         uses: actions/checkout@v4
-
+      - name: Test Local Action
+        uses: ./
+        with:
+          PrId: 1
       - name: Test Local Action
         id: test-action
         uses: ./
         with:
           PrId: 6
-
       - name: Print Output
-        id: output
         run: |
           echo "${{ steps.test-action.outputs.apiUrl }}"
           echo "${{ steps.test-action.outputs.htmlUrl }}"
+          echo "${{ steps.test-action.outputs.prState }}"
+          echo "${{ steps.test-action.outputs.prLockedState }}"
+          echo "${{ steps.test-action.outputs.prDraftState }}"
+          echo "${{ steps.test-action.outputs.requestUser }}"
           echo "${{ steps.test-action.outputs.commits }}"
           echo "${{ steps.test-action.outputs.additions }}"
           echo "${{ steps.test-action.outputs.deletions }}"
           echo "${{ steps.test-action.outputs.changedFiles }}"
           echo "${{ steps.test-action.outputs.headSha }}"
+          echo "${{ steps.test-action.outputs.headLabel }}"
+          echo "${{ steps.test-action.outputs.headUserName }}"
           echo "${{ steps.test-action.outputs.headFullName }}"
           echo "${{ steps.test-action.outputs.baseSha }}"
+          echo "${{ steps.test-action.outputs.baseLabel }}"
+          echo "${{ steps.test-action.outputs.baseUserName }}"
           echo "${{ steps.test-action.outputs.baseFullName }}"
           echo "${{ steps.test-action.outputs.requestUser }}"
           echo "${{ steps.test-action.outputs.headRef }}"

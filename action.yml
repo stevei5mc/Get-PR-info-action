@@ -31,7 +31,7 @@ outputs:
   prDraftState:
     description: Pull request draft state
   requestUser:
-    description: Pull request initiate user
+    description: Pull request initiate user name
   commits:
     description: Pull request commits count
   additions:
@@ -44,6 +44,10 @@ outputs:
     description: Pull request head sha
   headRef:
     description: Pull request head sha
+  headLabel:
+    description: Pull request head label
+  headUserName:
+    description: Pull request head user name
   headFullName:
     description: Pull request head full name
   headRepoUrl:
@@ -52,6 +56,10 @@ outputs:
     description: Pull request base sha
   baseRef:
     description: Pull request base sha
+  baseLabel:
+    description: Pull request base label
+  baseUserName:
+    description: Pull request base user name
   baseFullName:
     description: Pull request base full name
   baseRepoUrl:

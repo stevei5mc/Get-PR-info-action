@@ -27310,6 +27310,12 @@ async function run() {
 		const headRef = data.head.ref;
 		core.info(`Head ref:  ${headRef}`);
 		core.setOutput('headRef',headRef);
+		const headLabel = data.head.label;
+		core.info(`Head label:  ${headLabel}`);
+		core.setOutput('headLabel',headLabel);
+		const headUserName = data.head.label;
+		core.info(`Head user name:  ${headUserName}`);
+		core.setOutput('headUserName',headUserName);
 		const headFullName = data.head.repo.full_name;
 		core.info(`Head full name:  ${headFullName}`);
 		core.setOutput('headFullName',headFullName);
@@ -27322,6 +27328,12 @@ async function run() {
 		const baseRef = data.base.ref;
 		core.info(`Base ref:  ${baseRef}`);
 		core.setOutput('baseRef',baseRef);
+		const baseLabel = data.base.label;
+		core.info(`Base label:  ${baseLabel}`);
+		core.setOutput('baseLabel',baseLabel);
+		const baseUserName = data.base.label;
+		core.info(`Base user name:  ${baseUserName}`);
+		core.setOutput('baseUserName',baseUserName);
 		const baseFullName = data.base.repo.full_name;
 		core.info(`Base full name:  ${baseFullName}`);
 		core.setOutput('baseFullName',baseFullName);
