@@ -27322,7 +27322,7 @@ async function run() {
 		const headLabel = data.head.label;
 		core.info(`Head label:  ${headLabel}`);
 		core.setOutput('headLabel',headLabel);
-		const headUserName = data.head.label;
+		const headUserName = data.head.user.login;
 		core.info(`Head user name:  ${headUserName}`);
 		core.setOutput('headUserName',headUserName);
 		const headFullName = data.head.repo.full_name;
@@ -27340,7 +27340,7 @@ async function run() {
 		const baseLabel = data.base.label;
 		core.info(`Base label:  ${baseLabel}`);
 		core.setOutput('baseLabel',baseLabel);
-		const baseUserName = data.base.label;
+		const baseUserName = data.base.user.login;
 		core.info(`Base user name:  ${baseUserName}`);
 		core.setOutput('baseUserName',baseUserName);
 		const baseFullName = data.base.repo.full_name;
