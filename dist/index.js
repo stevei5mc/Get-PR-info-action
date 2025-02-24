@@ -27289,6 +27289,15 @@ async function run() {
 		const prDraftState = data.draft;
 		core.info(`Pull request draft state:  ${prDraftState}`);
 		core.setOutput('prDraftState',prDraftState);
+		const createdAt = data.created_at;
+		core.info(`Created at:  ${createdAt}`);
+		core.setOutput('createdAt',createdAt);
+		const updatedAt = data.updated_at;
+		core.info(`Updated at:  ${updatedAt}`);
+		core.setOutput('updatedAt',updatedAt);
+		const closedAt = data.closed_at;
+		core.info(`Closed at:  ${closedAt}`);
+		core.setOutput('closedAt',closedAt);
 		const requestUser = data.user.login;
 		core.info(`Request initiate user:  ${requestUser}`);
 		core.setOutput('requestUser',requestUser);
@@ -27340,6 +27349,17 @@ async function run() {
 		const baseRepoUrl = data.base.repo.html_url;
 		core.info(`Base repo url:  ${baseRepoUrl}`);
 		core.setOutput('baseRepoUrl',baseRepoUrl);
+		const prMergedState = data.merged;
+		core.info(`Merged state:  ${prMergedState}`);
+		core.setOutput('prMergedState',prMergedState);
+		if (prMergedState) {
+			const prMergedBy = data.merged;
+			core.info(`Merged by:  ${prMergedBy}`);
+			core.setOutput('prMergedBy',prMergedBy);
+			const mergedAt = data.merged_at;
+			core.info(`Merged at:  ${mergedAt}`);
+			core.setOutput('mergedAt',mergedAt);
+		}
 	} catch (error) {
 		core.setFailed(`Network status code ${error.response.status}, reason ${error.message}`);
 	}

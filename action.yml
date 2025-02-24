@@ -32,6 +32,12 @@ outputs:
     description: Pull request draft state
   requestUser:
     description: Pull request initiate user name
+  createdAt:
+    description: Pull request state
+  updatedAt:
+    description: Pull request locked state
+  closedAt:
+    description: Pull request draft state
   commits:
     description: Pull request commits count
   additions:
@@ -64,6 +70,10 @@ outputs:
     description: Pull request base full name
   baseRepoUrl:
     description: Pull request base repo url
+  prMergedState:
+    description: Pull request merged state
+  prMergedBy:
+    description: Pull request merged state
 
 runs:
   using: node20
