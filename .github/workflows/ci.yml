@@ -53,11 +53,16 @@ jobs:
       - name: Checkout
         id: checkout
         uses: actions/checkout@v4
-      - name: Test Local Action
+      - name: Test Local Action 1
         uses: ./
         with:
           PrId: 1
-      - name: Test Local Action
+      - name: Test Local Action 2 
+        id: test-action
+        uses: ./
+        with:
+          PrId: 2
+      - name: Test Local Action 3
         id: test-action
         uses: ./
         with:
