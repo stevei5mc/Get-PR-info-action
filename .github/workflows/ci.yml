@@ -61,9 +61,8 @@ jobs:
         id: test-action
         uses: ./
         with:
-          PrId: 2
+          PrId: 5
       - name: Test Local Action 3
-        id: test-action
         uses: ./
         with:
           PrId: 6
