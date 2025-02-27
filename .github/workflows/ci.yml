@@ -46,9 +46,17 @@ jobs:
   #       run: npm run ci-test
 
   test-action:
-    name: GitHub Actions Test
-    runs-on: ubuntu-latest
-
+    strategy:
+      fail-fast: false
+      matrix:
+        include: [
+          {name: "ubuntu",path: "test1",os: ubuntu-latest},
+          {name: "windows",path: "test2",os: windows-latest},
+          {name: "macos",path: "test3",os: macos-latest}
+        ]
+    runs-on: ${{ matrix.os }}
+    needs: [initialize,build] 
+    name: GitHub Actions Test for ${{ matrix.name }} 
     steps:
       - name: Checkout
         id: checkout
@@ -67,6 +75,7 @@ jobs:
         with:
           PrId: 6
       - name: Print Output
+        shell: bash
         run: |
           echo "${{ steps.test-action.outputs.apiUrl }}"
           echo "${{ steps.test-action.outputs.htmlUrl }}"

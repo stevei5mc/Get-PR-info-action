@@ -27361,7 +27361,14 @@ async function run() {
 			core.setOutput('mergedAt',mergedAt);
 		}
 	} catch (error) {
-		core.setFailed(`Network status code ${error.response.status}, reason ${error.message}`);
+		if (!error.response) {
+			core.setFailed(`Error: No response received. Message: ${error.message}`);
+			return;
+		  }
+		  
+		  if (error.response.status) {
+			core.setFailed(`Network status code ${error.response.status}, reason ${error.message}`);
+		  }
 	}
 }
 
