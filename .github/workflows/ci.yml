@@ -49,14 +49,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        include: [
-          {name: "ubuntu",path: "test1",os: ubuntu-latest},
-          {name: "windows",path: "test2",os: windows-latest},
-          {name: "macos",path: "test3",os: macos-latest}
-        ]
+        include:
+          - os: ubuntu-latest
+          - os: windows-latest
+          - os: macos-latest
     runs-on: ${{ matrix.os }}
     needs: [initialize,build] 
-    name: GitHub Actions Test for ${{ matrix.name }} 
+    name: GitHub Actions Test
     steps:
       - name: Checkout
         id: checkout

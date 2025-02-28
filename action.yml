@@ -17,6 +17,10 @@ inputs:
     description: PR ID
     required: true
     default: '${{ github.event.pull_request.number }}'
+  token:
+    description: Token
+    required: true
+    default: '${{ github.token }}'
 
 # Define your outputs here.
 outputs:

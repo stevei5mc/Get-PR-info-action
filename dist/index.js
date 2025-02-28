@@ -27275,7 +27275,13 @@ async function run() {
 	core.info(`Api url: ${url}`);
 	core.setOutput('apiUrl',url);
 	try {
-		const response = await fetch(url);
+		const token = core.getInput('token');
+		const response = await fetch(url, {
+			method: 'GET',
+			headers: {
+				"Authorization": `Bearer ${token}`,
+			}
+		});
 		const data = await response.json();
 		const htmlUrl = data.html_url;
 		core.info(`Html url:  ${htmlUrl}`);
@@ -27353,7 +27359,7 @@ async function run() {
 		core.info(`Merged state:  ${prMergedState}`);
 		core.setOutput('prMergedState',prMergedState);
 		if (prMergedState) {
-			const prMergedBy = data.merged;
+			const prMergedBy = data.merged_by.login;
 			core.info(`Merged by:  ${prMergedBy}`);
 			core.setOutput('prMergedBy',prMergedBy);
 			const mergedAt = data.merged_at;
@@ -27363,12 +27369,10 @@ async function run() {
 	} catch (error) {
 		if (!error.response) {
 			core.setFailed(`Error: No response received. Message: ${error.message}`);
-			return;
-		  }
-		  
-		  if (error.response.status) {
+		}
+		if (error.response.status) {
 			core.setFailed(`Network status code ${error.response.status}, reason ${error.message}`);
-		  }
+		}
 	}
 }
 
