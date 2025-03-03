@@ -101,3 +101,7 @@ jobs:
           echo "${{ steps.test-action.outputs.baseRepoUrl }}"
           echo "${{ steps.test-action.outputs.prMergedState }}"
           echo "${{ steps.test-action.outputs.prMergedBy }}"
+      - name: Test Local Action 4 
+        if: github.github.event_name == 'pull_request'
+        id: test-action-4
+        uses: ./
