@@ -27270,7 +27270,7 @@ async function run() {
   const repoName = core.getInput('repoName');
 	core.info(`Repository name: ${repoName}`);
   	const prId = core.getInput('prId');
-	core.info(`Pull requests: ${prId}`);
+	core.info(`Pull requests number: ${prId}`);
 	const url = `https://api.github.com/repos/${repoName}/pulls/${prId}`;
 	core.info(`Api url: ${url}`);
 	core.setOutput('apiUrl',url);
