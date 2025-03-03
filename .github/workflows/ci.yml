@@ -53,6 +53,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     name: GitHub Actions Test
     steps:
+      - run: echo "${{ github.event_name }}"
       - name: Checkout
         id: checkout
         uses: actions/checkout@v4
