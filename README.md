@@ -39,3 +39,41 @@
 |baseRepoUrl|目标 Pull request 的 base 分支所在的仓库的链接||
 |prMergedState|目标 Pull request 的合并状态||
 |prMergedBy|将目标 Pull request 合并的用户|如果 `prMergedState` 为 `false` 将不会有结果|
+
+## **使用示例**
+
+### **pull request**
+```yml
+on:
+  pull_request:
+    branches:
+      - main
+
+  test-action:
+    runs-on: ubuntu-latest
+    name: GitHub Actions Test
+    steps:
+      - name: Test Local Action 4 
+        id: test-action-4
+        uses: ./
+```
+
+### **workflow dispatch**
+
+```yml
+on:
+  workflow_dispatch:
+    PR_number:
+        description: 'PR number'
+        required: true
+
+  test-action:
+    runs-on: ubuntu-latest
+    name: GitHub Actions Test
+    steps:
+      - name: Test Local Action 4 
+        id: test-action-4
+        uses: ./
+        with:
+            prId: ${{ inputs.PR_number }}
+```
