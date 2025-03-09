@@ -27289,6 +27289,11 @@ async function run() {
 		const prState = data.state;
 		core.info(`Pull request state:  ${prState}`);
 		core.setOutput('prState',prState);
+		if (prState == 'close') {
+			const closedAt = data.closed_at;
+			core.info(`Closed at:  ${closedAt}`);
+			core.setOutput('closedAt',closedAt);
+		}
 		const prLockedState = data.locked;
 		core.info(`Pull request locked state:  ${prLockedState}`);
 		core.setOutput('prLockedState',prLockedState);
@@ -27301,9 +27306,6 @@ async function run() {
 		const updatedAt = data.updated_at;
 		core.info(`Updated at:  ${updatedAt}`);
 		core.setOutput('updatedAt',updatedAt);
-		const closedAt = data.closed_at;
-		core.info(`Closed at:  ${closedAt}`);
-		core.setOutput('closedAt',closedAt);
 		const requestUser = data.user.login;
 		core.info(`Request initiate user:  ${requestUser}`);
 		core.setOutput('requestUser',requestUser);

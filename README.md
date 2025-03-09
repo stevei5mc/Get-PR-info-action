@@ -15,12 +15,13 @@
 |:-:|:-:|:-:|
 |apiUrl|目标 Pull request 的api请求链接||
 |htmlUrl|目标 Pull request的链接||
+|prState|目标 Pull request 的状态||
 |prLockedState|目标 Pull request 的锁定状态||
 |prDraftState|目标 Pull request 的草案状态||
 |requestUser|目标 Pull request 的发起人||
 |createdAt|目标 Pull request 的创建时间||
 |updatedAt|目标 Pull request 的更新时间||
-|closedAt|目标 Pull request 的关闭时间||
+|closedAt|目标 Pull request 的关闭时间|如果 `prState` 为 `open` 将不会有结果|
 |commits|目标 Pull request 的提交数||
 |additions|目标 Pull request 的增加行数||
 |deletions|目标 Pull request 的删除行数||
