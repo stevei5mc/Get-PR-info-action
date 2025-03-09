@@ -27289,7 +27289,7 @@ async function run() {
 		const prState = data.state;
 		core.info(`Pull request state:  ${prState}`);
 		core.setOutput('prState',prState);
-		if (prState == 'close') {
+		if (prState == 'closed') {
 			const closedAt = data.closed_at;
 			core.info(`Closed at:  ${closedAt}`);
 			core.setOutput('closedAt',closedAt);

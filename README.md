@@ -1,13 +1,17 @@
 # Get PR info action
 - **这个 action 用于获取 pr 的一些相关的信息**
 
+## **Language**
+- **[简体中文](./README.md)  《=**
+- **[English](./README-EN.md)**
+
 ## **Action 的输入**
 
 |输入名称|描述|默认值|
 |:-:|:-:|:-:|
 |repoName|目标PR所在的仓库|${{ github.repository }}|
 |prId|目标PR的编号|${{ github.event.pull_request.number }}|
-|token|GitHub token，这将默认为 GitHub token。如果您想使用您的个人令牌（用于定位其他存储库等）来使用的。<br>如果您使用的是个人访问令牌，它应该可以访问 `repo` 范围。|${{ github.token }}|
+|token|GitHub token，这将默认为 GitHub token。如果您想使用您的个人令牌（用于定位其他存储库等）来使用的。<br>如果您使用的是个人访问 token，它应该可以访问 `repo` 范围。|${{ github.token }}|
 
 ## **Action 输出**
 
