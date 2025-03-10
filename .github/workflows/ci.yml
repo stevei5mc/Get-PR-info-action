@@ -58,11 +58,11 @@ jobs:
         id: checkout
         uses: actions/checkout@v4
       - name: Test Local Action 1
+        id: test-action
         uses: ./
         with:
           PrId: 1
       - name: Test Local Action 2 
-        id: test-action
         uses: ./
         with:
           PrId: 5
