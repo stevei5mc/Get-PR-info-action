@@ -27,6 +27,7 @@ import require$$6 from 'string_decoder';
 import require$$0$9 from 'diagnostics_channel';
 import require$$2$2 from 'child_process';
 import require$$6$1 from 'timers';
+import { console } from 'node:inspector';
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
@@ -27266,23 +27267,115 @@ async function wait(milliseconds) {
  * @returns {Promise<void>} Resolves when the action is complete.
  */
 async function run() {
-  try {
-    const ms = coreExports.getInput('milliseconds');
-
-    // Debug logs are only output if the `ACTIONS_STEP_DEBUG` secret is true
-    coreExports.debug(`Waiting ${ms} milliseconds ...`);
-
-    // Log the current timestamp, wait, then log the new timestamp
-    coreExports.debug(new Date().toTimeString());
-    await wait(parseInt(ms, 10));
-    coreExports.debug(new Date().toTimeString());
-
-    // Set outputs for other workflow steps to use
-    coreExports.setOutput('time', new Date().toTimeString());
-  } catch (error) {
-    // Fail the workflow run if an error occurs
-    if (error instanceof Error) coreExports.setFailed(error.message);
-  }
+  const repoName = core.getInput('repoName');
+	core.info(`Repository name: ${repoName}`);
+  	const prId = core.getInput('prId');
+	core.info(`Pull requests number: ${prId}`);
+	const url = `https://api.github.com/repos/${repoName}/pulls/${prId}`;
+	core.info(`Api url: ${url}`);
+	core.setOutput('apiUrl',url);
+	try {
+		const token = core.getInput('token');
+		const response = await fetch(url, {
+			method: 'GET',
+			headers: {
+				"Authorization": `Bearer ${token}`,
+			}
+		});
+		const data = await response.json();
+		const htmlUrl = data.html_url;
+		core.info(`Html url:  ${htmlUrl}`);
+		core.setOutput('htmlUrl',htmlUrl);
+		const prState = data.state;
+		core.info(`Pull request state:  ${prState}`);
+		core.setOutput('prState',prState);
+		if (prState == 'closed') {
+			const closedAt = data.closed_at;
+			core.info(`Closed at:  ${closedAt}`);
+			core.setOutput('closedAt',closedAt);
+		}
+		const prLockedState = data.locked;
+		core.info(`Pull request locked state:  ${prLockedState}`);
+		core.setOutput('prLockedState',prLockedState);
+		const prDraftState = data.draft;
+		core.info(`Pull request draft state:  ${prDraftState}`);
+		core.setOutput('prDraftState',prDraftState);
+		const createdAt = data.created_at;
+		core.info(`Created at:  ${createdAt}`);
+		core.setOutput('createdAt',createdAt);
+		const updatedAt = data.updated_at;
+		core.info(`Updated at:  ${updatedAt}`);
+		core.setOutput('updatedAt',updatedAt);
+		const requestUser = data.user.login;
+		core.info(`Request initiate user:  ${requestUser}`);
+		core.setOutput('requestUser',requestUser);
+		const commits = data.commits;
+		core.info(`Commits:  ${commits}`);
+		core.setOutput('commits',commits);
+		const additions = data.additions;
+		core.info(`Additions:  ${additions}`);
+		core.setOutput('additions',additions);
+		const deletions = data.deletions;
+		core.info(`Deletions:  ${deletions}`);
+		core.setOutput('deletions',deletions);
+		const changedFiles = data.changed_files;
+		core.info(`Changed files:  ${changedFiles}`);
+		core.setOutput('changedFiles',changedFiles);
+		const headSha = data.head.sha;
+		core.info(`Head sha:  ${headSha}`);
+		core.setOutput('headSha',headSha);
+		const headRef = data.head.ref;
+		core.info(`Head ref:  ${headRef}`);
+		core.setOutput('headRef',headRef);
+		const headLabel = data.head.label;
+		core.info(`Head label:  ${headLabel}`);
+		core.setOutput('headLabel',headLabel);
+		const headUserName = data.head.user.login;
+		core.info(`Head user name:  ${headUserName}`);
+		core.setOutput('headUserName',headUserName);
+		const headFullName = data.head.repo.full_name;
+		core.info(`Head full name:  ${headFullName}`);
+		core.setOutput('headFullName',headFullName);
+		const headRepoUrl = data.head.repo.html_url;
+		core.info(`Head repo url:  ${headRepoUrl}`);
+		core.setOutput('headRepoUrl',headRepoUrl);
+		const baseSha = data.base.sha;
+		core.info(`Base sha:  ${baseSha}`);
+		core.setOutput('baseSha',baseSha);
+		const baseRef = data.base.ref;
+		core.info(`Base ref:  ${baseRef}`);
+		core.setOutput('baseRef',baseRef);
+		const baseLabel = data.base.label;
+		core.info(`Base label:  ${baseLabel}`);
+		core.setOutput('baseLabel',baseLabel);
+		const baseUserName = data.base.user.login;
+		core.info(`Base user name:  ${baseUserName}`);
+		core.setOutput('baseUserName',baseUserName);
+		const baseFullName = data.base.repo.full_name;
+		core.info(`Base full name:  ${baseFullName}`);
+		core.setOutput('baseFullName',baseFullName);
+		const baseRepoUrl = data.base.repo.html_url;
+		core.info(`Base repo url:  ${baseRepoUrl}`);
+		core.setOutput('baseRepoUrl',baseRepoUrl);
+		const prMergedState = data.merged;
+		core.info(`Merged state:  ${prMergedState}`);
+		core.setOutput('prMergedState',prMergedState);
+		if (prMergedState) {
+			const prMergedBy = data.merged_by.login;
+			core.info(`Merged by:  ${prMergedBy}`);
+			core.setOutput('prMergedBy',prMergedBy);
+			const mergedAt = data.merged_at;
+			core.info(`Merged at:  ${mergedAt}`);
+			core.setOutput('mergedAt',mergedAt);
+		}
+	} catch (error) {
+		if (!error.response) {
+			core.setFailed(`Error: No response received. Message: ${error.message}`);
+		}
+		if (error.response.status) {
+			core.setFailed(`Network status code ${error.response.status}, reason ${error.message}`);
+		}
+	}
 }
 
 /**
