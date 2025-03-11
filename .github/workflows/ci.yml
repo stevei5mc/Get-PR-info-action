@@ -5,9 +5,15 @@ on:
   pull_request:
     branches:
       - main
+    paths-ignore:
+      - 'README.md'
+      - 'README-EN.md'
   push:
     branches:
       - main
+    paths-ignore:
+      - 'README.md'
+      - 'README-EN.md'
 
 permissions:
   contents: read

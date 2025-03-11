@@ -3,7 +3,7 @@
 
 ## **Language**
 - **[简体中文](./README.md)**
-- **[English](./README-EN.md)  《=**
+- **[English](./README-EN.md)  <--**
 
 ## **Action inputs**
 
@@ -60,7 +60,7 @@ on:
     steps:
       - name: Test Local Action 4 
         id: test-action-4
-        uses: ./
+        uses: stevei5mc/Get-PR-info-action@main
 ```
 
 ### **workflow dispatch**
@@ -78,7 +78,7 @@ on:
     steps:
       - name: Test Local Action 4 
         id: test-action-4
-        uses: ./
+        uses: stevei5mc/Get-PR-info-action@main
         with:
             prId: ${{ inputs.PR_number }}
 ```

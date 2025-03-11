@@ -2,7 +2,7 @@
 - **这个 action 用于获取 pr 的一些相关的信息**
 
 ## **Language**
-- **[简体中文](./README.md)  《=**
+- **[简体中文](./README.md)  <--**
 - **[English](./README-EN.md)**
 
 ## **Action 的输入**
@@ -60,7 +60,7 @@ on:
     steps:
       - name: Test Local Action 4 
         id: test-action-4
-        uses: ./
+        uses: stevei5mc/Get-PR-info-action@main
 ```
 
 ### **workflow dispatch**
@@ -78,7 +78,7 @@ on:
     steps:
       - name: Test Local Action 4 
         id: test-action-4
-        uses: ./
+        uses: stevei5mc/Get-PR-info-action@main
         with:
             prId: ${{ inputs.PR_number }}
 ```
