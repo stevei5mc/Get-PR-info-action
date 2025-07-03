@@ -2,7 +2,7 @@
 - **这个 action 用于获取 pr 的一些相关的信息**
 
 ## **Language**
-- **[简体中文](./README.md)  <--**
+- **简体中文  <--**
 - **[English](./README-EN.md)**
 
 ## **Action 的输入**
@@ -25,7 +25,7 @@
 |requestUser|目标 Pull request 的发起人||
 |createdAt|目标 Pull request 的创建时间||
 |updatedAt|目标 Pull request 的更新时间||
-|closedAt|目标 Pull request 的关闭时间|如果 `prState` 为 `open` 将不会有结果|
+|closedAt|目标 Pull request 的关闭时间|如果 `prState` 获取的状态为 `open` 将不会返回结果|
 |commits|目标 Pull request 的提交数||
 |additions|目标 Pull request 的增加行数||
 |deletions|目标 Pull request 的删除行数||
@@ -43,7 +43,7 @@
 |baseFullName|目标 Pull request 的 base 分支所在的仓库的全名||
 |baseRepoUrl|目标 Pull request 的 base 分支所在的仓库的链接||
 |prMergedState|目标 Pull request 的合并状态||
-|prMergedBy|将目标 Pull request 合并的用户|如果 `prMergedState` 为 `false` 将不会有结果|
+|prMergedBy|将目标 Pull request 合并的用户|如果 `prMergedState` 获取的状态为 `false` 将不会返回结果|
 
 ## **使用示例**
 
