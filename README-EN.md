@@ -60,7 +60,7 @@ on:
     steps:
       - name: Test Local Action 4 
         id: test-action-4
-        uses: stevei5mc/Get-PR-info-action@main
+        uses: stevei5mc/Get-PR-info-action@v1
 ```
 
 ### **workflow dispatch**
@@ -78,7 +78,7 @@ on:
     steps:
       - name: Test Local Action 4 
         id: test-action-4
-        uses: stevei5mc/Get-PR-info-action@main
+        uses: stevei5mc/Get-PR-info-action@v1
         with:
             prId: ${{ inputs.PR_number }}
 ```
