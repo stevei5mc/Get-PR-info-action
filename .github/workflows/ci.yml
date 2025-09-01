@@ -26,7 +26,7 @@ jobs:
   #   steps:
   #     - name: Checkout
   #       id: checkout
-  #       uses: actions/checkout@v4
+  #       uses: actions/checkout@v5
 
   #     - name: Setup Node.js
   #       id: setup-node
@@ -63,7 +63,7 @@ jobs:
       - run: echo "${{ github.event_name }}"
       - name: Checkout
         id: checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Test Local Action 1
         id: test-action
         uses: ./
