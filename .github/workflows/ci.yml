@@ -13,9 +13,6 @@ on:
     paths-ignore:
       - '**.md'
 
-permissions:
-  contents: read
-
 jobs:
   test-action:
     strategy:
@@ -25,6 +22,8 @@ jobs:
         os: [ubuntu-latest]
     name: Test the action
     runs-on: ${{ matrix.os }}
+    permissions:
+      contents: read
     steps:
       - run: echo "${{ github.event_name }}"
       - name: Checkout
@@ -58,6 +57,10 @@ jobs:
   analyze:
     name: Analyze
     runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
     strategy:
       fail-fast: false
       matrix:
