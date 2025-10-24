@@ -29,7 +29,7 @@ outputs:
   htmlUrl:
     description: Pull request url
   prState:
-    description: Pull request state
+    description: Pull request state (open, locked, draft, merged, closed)
   prLockedState:
     description: Pull request locked state
   prDraftState:
@@ -39,11 +39,11 @@ outputs:
   createdAt:
     description: Pull request state
   updatedAt:
-    description: Pull request locked state
+    description: Pull request update time
   closedAt:
     description: Pull request draft state
   commits:
-    description: Pull request commits count
+    description: Pull request close time
   additions:
     description: Pull request additions line
   deletions:

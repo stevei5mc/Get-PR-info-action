@@ -19,7 +19,7 @@
 |:-:|:-:|:-:|
 |apiUrl|The API request link of the target Pull request||
 |htmlUrl|The link of the target Pull request||
-|prState|The state of the target Pull request||
+|prState|The state of the target Pull request|State : (Open, Locked, Draft, Merged, Closed)|
 |prLockedState|The locked state of the target Pull request||
 |prDraftState|The draft state of the target Pull request||
 |requestUser|The creator of the target Pull request||

@@ -27286,9 +27286,7 @@ async function run() {
 		const htmlUrl = data.html_url;
 		core.info(`Html url:  ${htmlUrl}`);
 		core.setOutput('htmlUrl',htmlUrl);
-		const prState = data.state;
-		core.info(`Pull request state:  ${prState}`);
-		core.setOutput('prState',prState);
+		let prState = data.state;
 		if (prState == 'closed') {
 			const closedAt = data.closed_at;
 			core.info(`Closed at:  ${closedAt}`);
@@ -27368,6 +27366,17 @@ async function run() {
 			core.info(`Merged at:  ${mergedAt}`);
 			core.setOutput('mergedAt',mergedAt);
 		}
+		// 从 Github Api 获取的 state 就只有 open 和 closed ，这里是我也将 locked, draft, merged 归到状态列表中
+		// This state list includes 'locked', 'draft', and 'merged' beyond the native 'open' and 'closed' states provided by the GitHub API.
+		if (prState == 'open' && prLockedState) {
+			prState = "locked";
+		}else if (prState == 'open' && prDraftState) {
+			prState = "draft"
+		}else if(prState != 'open' && prMergedState) {
+			prState = "merged";
+		}
+		core.info(`Pull request state: ${prState}`);
+		core.setOutput('prState', prState);
 	} catch (error) {
 		if (!error.response) {
 			core.setFailed(`Error: No response received. Message: ${error.message}`);
