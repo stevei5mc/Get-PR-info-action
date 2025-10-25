@@ -27368,12 +27368,31 @@ async function run() {
 		}
 		// 从 Github Api 获取的 state 就只有 open 和 closed ，这里是我也将 locked, draft, merged 归到状态列表中
 		// This state list includes 'locked', 'draft', and 'merged' beyond the native 'open' and 'closed' states provided by the GitHub API.
-		if (prState == 'open' && prLockedState) {
-			prState = "locked";
-		}else if (prState == 'open' && prDraftState) {
-			prState = "draft"
-		}else if(prState != 'open' && prMergedState) {
-			prState = "merged";
+		if (prState == 'open') {
+			if (prDraftState && prLockedState) {
+				prState = "draft , locked";
+			}else {
+				if (prLockedState) {
+					prState = "locked";
+				}
+				if (prDraftState) {
+					prState = "draft"
+				}
+			}
+		}else {
+			if (prMergedState) {
+				prState = "merged";
+				if (prLockedState) {
+					prState += " , locked";
+				}
+			}else {
+				if (prLockedState) {
+					prState += " , locked";
+				}
+				if (prDraftState) {
+					prState += " , draft"
+				}
+			}
 		}
 		core.info(`Pull request state: ${prState}`);
 		core.setOutput('prState', prState);

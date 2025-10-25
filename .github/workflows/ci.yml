@@ -20,42 +20,47 @@ jobs:
       matrix:
         # os: [ubuntu-latest, windows-latest, macos-latest]
         os: [ubuntu-latest]
-    name: Test the action
+    name: Test action
     runs-on: ${{ matrix.os }}
     permissions:
       contents: read
     steps:
       - run: echo "${{ github.event_name }}"
       - name: Checkout
-        id: checkout
         uses: actions/checkout@v5
       - name: Test action for current pull request
         if: github.event_name == 'pull_request'
+        id: runPr
         uses: ./
       - name: Test action for pull request is merged
         uses: ./
         with:
           prId: 22
+      - name: Test action for pull request is merged and locked
+        uses: ./
+        with:
+          prId: 3
       - name: Test action for pull request is closed
         uses: ./
         with:
           prId: 1
+      - name: Test action for pull request is closed and locked
+        uses: ./
+        with:
+          prId: 20
       # - name: Test action for pull request is draft
-      #   uses: ./
-      #   with:
-      #     prId: 1
-      # - name: Test action for pull request is locked
+      #   if: github.event_name != 'pull_request' || (github.event_name == 'pull_request' && ${{ steps.runPr.outputs.prDraftState }} == 'false')
       #   uses: ./
       #   with:
       #     prId: 1
       # - name: Test action for pull request is open
-      #   if: github.event_name != 'pull_request'
+      #   if: github.event_name != 'pull_request' || (github.event_name == 'pull_request' && ${{ steps.runPr.outputs.prDraftState }} == 'false')
       #   uses: ./
       #   with:
       #     prId: 1
 
-  analyze:
-    name: Analyze
+  codeql-analyze:
+    name: Codeql Analyze
     runs-on: ubuntu-latest
     permissions:
       actions: read

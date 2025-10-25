@@ -19,7 +19,7 @@
 |:-:|:-:|:-:|
 |apiUrl|目标 Pull request 的api请求链接||
 |htmlUrl|目标 Pull request的链接||
-|prState|目标 Pull request 的状态| 状态 : (Open, Locked, Draft, Merged, Closed) |
+|prState|目标 Pull request 的状态| 注：如果有多种状态也会一起输出的并且在 open 状态下若还有其他状态并不会带上 open 的状态<br>状态类型: [ open, locked, draft, merged, closed ]|
 |prLockedState|目标 Pull request 的锁定状态||
 |prDraftState|目标 Pull request 的草案状态||
 |requestUser|目标 Pull request 的发起人||
@@ -56,10 +56,9 @@ on:
 
   test-action:
     runs-on: ubuntu-latest
-    name: GitHub Actions Test
+    name: GitHub Actions
     steps:
-      - name: Test Local Action 4 
-        id: test-action-4
+      - name: Get pull request info
         uses: stevei5mc/Get-PR-info-action@v1
 ```
 
@@ -74,10 +73,9 @@ on:
 
   test-action:
     runs-on: ubuntu-latest
-    name: GitHub Actions Test
+    name: GitHub Actions 
     steps:
-      - name: Test Local Action 4 
-        id: test-action-4
+      - name: Get pull request info
         uses: stevei5mc/Get-PR-info-action@v1
         with:
             prId: ${{ inputs.PR_number }}

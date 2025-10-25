@@ -19,7 +19,7 @@
 |:-:|:-:|:-:|
 |apiUrl|The API request link of the target Pull request||
 |htmlUrl|The link of the target Pull request||
-|prState|The state of the target Pull request|State : (Open, Locked, Draft, Merged, Closed)|
+|prState|The state of the target Pull request|Note: While multiple states can be output together when applicable, the 'open' state is treated as a standalone state and will never be combined with other statuses.<br>State type: [ open, locked, draft, merged, closed ]|
 |prLockedState|The locked state of the target Pull request||
 |prDraftState|The draft state of the target Pull request||
 |requestUser|The creator of the target Pull request||
@@ -56,10 +56,9 @@ on:
 
   test-action:
     runs-on: ubuntu-latest
-    name: GitHub Actions Test
+    name: GitHub Actions
     steps:
-      - name: Test Local Action 4 
-        id: test-action-4
+      - name: Get pull request info
         uses: stevei5mc/Get-PR-info-action@v1
 ```
 
@@ -74,10 +73,9 @@ on:
 
   test-action:
     runs-on: ubuntu-latest
-    name: GitHub Actions Test
+    name: GitHub Actions 
     steps:
-      - name: Test Local Action 4 
-        id: test-action-4
+      - name: Get pull request info
         uses: stevei5mc/Get-PR-info-action@v1
         with:
             prId: ${{ inputs.PR_number }}
