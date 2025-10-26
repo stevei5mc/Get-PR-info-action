@@ -27376,7 +27376,7 @@ async function run() {
 					prState = "locked";
 				}
 				if (prDraftState) {
-					prState = "draft"
+					prState = "draft";
 				}
 			}
 		}else {
@@ -27390,7 +27390,7 @@ async function run() {
 					prState += " , locked";
 				}
 				if (prDraftState) {
-					prState += " , draft"
+					prState += " , draft";
 				}
 			}
 		}
