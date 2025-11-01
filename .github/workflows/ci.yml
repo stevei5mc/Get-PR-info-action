@@ -60,7 +60,7 @@ jobs:
       #     prId: 1
 
   codeql-analyze:
-    name: Codeql Analyze
+    name: CodeQL
     runs-on: ubuntu-latest
     permissions:
       actions: read
