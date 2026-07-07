@@ -1,8 +1,8 @@
 {
   "name": "get-a-pr-info-action",
   "description": "Get a PR info action",
-  "version": "1.0.1",
-  "author": "",
+  "version": "1.0.2",
+  "author": "stevei5mc",
   "type": "module",
   "private": true,
   "homepage": "https://github.com/actions/javascript-action#readme",
