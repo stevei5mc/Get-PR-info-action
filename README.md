@@ -1,9 +1,8 @@
 # Get PR info action
 - **这个 action 用于获取 pr 的一些相关的信息**
+- ![GitHub Release](https://img.shields.io/github/v/release/stevei5mc/Get-PR-info-action?style=plastic&color=drak%20green)
 
-## **Language**
-- **简体中文  <--**
-- **[English](./README-EN.md)**
+ **简体中文 | [English](./README-EN.md)**
 
 ## **Action 的输入**
 

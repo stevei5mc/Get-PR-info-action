@@ -1,9 +1,8 @@
 # Get PR info action
 - **This action is used to obtain some related information about a PR.**
+- ![GitHub Release](https://img.shields.io/github/v/release/stevei5mc/Get-PR-info-action?style=plastic&color=drak%20green)
 
-## **Language**
-- **[简体中文](./README.md)**
-- **English  <--**
+**[简体中文](./README.md) | English**
 
 ## **Action Input**
 
